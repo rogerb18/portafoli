@@ -181,11 +181,29 @@ const translations = {
   }
 };
 
-const hardSkills = [
-  "Java", "HTML", "CSS", "JavaScript", "SQL / MySQL",
-  "WordPress", "APIs REST", "Git i GitHub", "Bases de dades",
-  "Disseny web responsive", "Sistemes i xarxes"
-];
+const hardSkills = {
+  ca: [
+    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "APIs REST", "Swagger", "Docker", "Arquitectura client-servidor"] },
+    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Disseny web responsive"] },
+    { title: "Mòbil i multiplataforma", items: ["Flutter", "Android Studio"] },
+    { title: "CMS i plataformes", items: ["WordPress", "Moodle"] },
+    { title: "Altres", items: ["Git i GitHub", "Intel·ligència artificial (IA)", "Sistemes i xarxes"] }
+  ],
+  es: [
+    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "APIs REST", "Swagger", "Docker", "Arquitectura cliente-servidor"] },
+    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Diseño web responsive"] },
+    { title: "Móvil y multiplataforma", items: ["Flutter", "Android Studio"] },
+    { title: "CMS y plataformas", items: ["WordPress", "Moodle"] },
+    { title: "Otros", items: ["Git y GitHub", "Inteligencia artificial (IA)", "Sistemas y redes"] }
+  ],
+  en: [
+    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "REST APIs", "Swagger", "Docker", "Client-server architecture"] },
+    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Responsive web design"] },
+    { title: "Mobile & cross-platform", items: ["Flutter", "Android Studio"] },
+    { title: "CMS & platforms", items: ["WordPress", "Moodle"] },
+    { title: "Other", items: ["Git & GitHub", "Artificial intelligence (AI)", "Systems & networks"] }
+  ]
+};
 
 const softSkills = {
   ca: ["Ganes constants d'aprendre", "Treball en equip", "Puntualitat i gestió eficaç del temps", "Pensament lògic i crític", "Capacitat d'adaptació", "Resolució de problemes", "Comunicació i tracte amb el client"],
@@ -212,6 +230,7 @@ function applyLang(lang) {
   document.querySelectorAll(".lang-switch button").forEach(b => {
     b.classList.toggle("active", b.dataset.lang === lang);
   });
+  renderHardSkills();
   renderSoftSkills();
   renderProjects();
   localStorage.setItem("lang", lang);
@@ -219,7 +238,11 @@ function applyLang(lang) {
 
 function renderHardSkills() {
   const wrap = document.getElementById("hardSkills");
-  wrap.innerHTML = hardSkills.map(s => `<span class="chip"><i></i>${s}</span>`).join("");
+  wrap.innerHTML = hardSkills[currentLang].map(group => `
+    <div class="skill-group">
+      <h4>${group.title}</h4>
+      <div class="chips">${group.items.map(s => `<span class="chip"><i></i>${s}</span>`).join("")}</div>
+    </div>`).join("");
 }
 
 function renderSoftSkills() {
@@ -343,7 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNav();
   initReveal();
-  renderHardSkills();
   document.querySelectorAll(".lang-switch button").forEach(b => {
     b.addEventListener("click", () => applyLang(b.dataset.lang));
   });
