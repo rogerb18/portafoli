@@ -15,7 +15,8 @@
 </head>
 <body>
   <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
     <a href="#inici" class="brand">
@@ -50,19 +51,33 @@
 
   <main>
     <section class="hero" id="inici">
-      <div class="hero-inner">
-        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Desenvolupador d'aplicacions multiplataforma</p>
-        <h1 class="hero-title">Roger Buendia <span>Salazar</span></h1>
-        <p class="hero-lead" data-i18n="hero.lead">Creo aplicacions i solucions web amb codi net, atenció al detall i ganes constants d'aprendre.</p>
-        <div class="hero-cta">
-          <a href="#projectes" class="btn btn-primary" data-i18n="hero.ctaProjects">Veure projectes</a>
-          <a href="#contacte" class="btn btn-ghost" data-i18n="hero.ctaContact">Contacta'm</a>
+      <div class="hero-grid">
+        <div class="hero-inner">
+          <p class="hero-eyebrow" data-i18n="hero.eyebrow">Desenvolupador d'aplicacions multiplataforma</p>
+          <h1 class="hero-title">Roger Buendia <span>Salazar</span></h1>
+          <p class="hero-lead" data-i18n="hero.lead">Creo aplicacions i solucions web amb codi net, atenció al detall i ganes constants d'aprendre.</p>
+          <div class="hero-cta">
+            <a href="#projectes" class="btn btn-primary" data-i18n="hero.ctaProjects">Veure projectes</a>
+            <a href="#contacte" class="btn btn-ghost" data-i18n="hero.ctaContact">Contacta'm</a>
+          </div>
+          <ul class="hero-stats">
+            <li><strong data-count="915" data-suffix="+">0</strong><span data-i18n="hero.statHours">hores de pràctiques</span></li>
+            <li><strong data-count="2">0</strong><span data-i18n="hero.statDegrees">titulacions FP</span></li>
+            <li><strong data-count="3">0</strong><span data-i18n="hero.statLangs">idiomes</span></li>
+          </ul>
         </div>
-        <ul class="hero-stats">
-          <li><strong>915+</strong><span data-i18n="hero.statHours">hores de pràctiques</span></li>
-          <li><strong>2</strong><span data-i18n="hero.statDegrees">titulacions FP</span></li>
-          <li><strong>3</strong><span data-i18n="hero.statLangs">idiomes</span></li>
-        </ul>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb-stage">
+            <div class="orb-ring"></div>
+            <div class="orb"><span>RB</span></div>
+            <span class="float-badge fb-1">Java</span>
+            <span class="float-badge fb-2">Flutter</span>
+            <span class="float-badge fb-3">Laravel</span>
+            <span class="float-badge fb-4">Python</span>
+            <span class="float-badge fb-5">Docker</span>
+            <div class="status-pill"><span class="dot"></span><span data-i18n="hero.available">Disponible per treballar</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -76,7 +91,7 @@
           <p data-i18n="about.p1">Sóc un desenvolupador d'aplicacions multiplataforma format en el cicle de DAM i, prèviament, en Sistemes Microinformàtics i Xarxes. M'apassiona transformar idees en programari útil, fiable i ben estructurat.</p>
           <p data-i18n="about.p2">Treballo amb tecnologies com Java, SQL i el desenvolupament web, i disfruto aprenent eines noves per resoldre problemes reals. Busco aportar valor en equips on pugui seguir creixent professionalment.</p>
         </div>
-        <aside class="about-card">
+        <aside class="about-card card-glow">
           <h3 data-i18n="about.langTitle">Idiomes</h3>
           <ul class="lang-list">
             <li><span data-i18n="about.langCa">Català</span><em data-i18n="about.levelNative">Natiu</em></li>
@@ -95,7 +110,7 @@
       <div class="timeline">
         <article class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
+          <div class="tl-content card-glow">
             <div class="tl-top">
               <h3 data-i18n="exp.job1Role">Pràctiques de desenvolupament · CFGS DAM</h3>
               <span class="tl-date" data-i18n="exp.job1Date">515 h</span>
@@ -110,7 +125,7 @@
         </article>
         <article class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
+          <div class="tl-content card-glow">
             <div class="tl-top">
               <h3 data-i18n="exp.job2Role">Pràctiques de sistemes i xarxes · CFGM SMX</h3>
               <span class="tl-date" data-i18n="exp.job2Date">400 h · 2023</span>
@@ -133,12 +148,12 @@
         <h2 data-i18n="edu.title">Estudis</h2>
       </div>
       <div class="edu-grid">
-        <article class="edu-card">
+        <article class="edu-card card-glow">
           <span class="edu-badge" data-i18n="edu.badgeHigher">Grau superior</span>
           <h3 data-i18n="edu.deg1">CFGS Desenvolupament d'Aplicacions Multiplataforma</h3>
           <p class="edu-school">Escola Freta · Calella</p>
         </article>
-        <article class="edu-card">
+        <article class="edu-card card-glow">
           <span class="edu-badge" data-i18n="edu.badgeMid">Grau mitjà</span>
           <h3 data-i18n="edu.deg2">CFGM Sistemes Microinformàtics i Xarxes</h3>
           <p class="edu-school">Escola Freta · Calella</p>
@@ -182,17 +197,17 @@
       </div>
       <p class="section-sub" data-i18n="contact.sub">Estàs buscant algú com jo? Parlem-ne.</p>
       <div class="contact-grid">
-        <a class="contact-card" href="mailto:rogerbuendia37@gmail.com">
+        <a class="contact-card card-glow" href="mailto:rogerbuendia37@gmail.com">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           <span class="contact-label" data-i18n="contact.email">Correu electrònic</span>
           <span class="contact-value">rogerbuendia37@gmail.com</span>
         </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/roger-buendia-salazar-828708356" target="_blank" rel="noopener">
+        <a class="contact-card card-glow" href="https://www.linkedin.com/in/roger-buendia-salazar-828708356" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           <span class="contact-label">LinkedIn</span>
           <span class="contact-value">Roger Buendia Salazar</span>
         </a>
-        <a class="contact-card" href="https://github.com/rogerb18" target="_blank" rel="noopener">
+        <a class="contact-card card-glow" href="https://github.com/rogerb18" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           <span class="contact-label">GitHub</span>
           <span class="contact-value">github.com/rogerb18</span>

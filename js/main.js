@@ -13,6 +13,7 @@ const translations = {
     "hero.statHours": "hores de pràctiques",
     "hero.statDegrees": "titulacions FP",
     "hero.statLangs": "idiomes",
+    "hero.available": "Disponible per treballar",
     "about.title": "Sobre mi",
     "about.p1": "Sóc un desenvolupador d'aplicacions multiplataforma format en el cicle de DAM i, prèviament, en Sistemes Microinformàtics i Xarxes. M'apassiona transformar idees en programari útil, fiable i ben estructurat.",
     "about.p2": "Treballo amb tecnologies com Java, SQL i el desenvolupament web, i disfruto aprenent eines noves per resoldre problemes reals. Busco aportar valor en equips on pugui seguir creixent professionalment.",
@@ -73,6 +74,7 @@ const translations = {
     "hero.statHours": "horas de prácticas",
     "hero.statDegrees": "titulaciones FP",
     "hero.statLangs": "idiomas",
+    "hero.available": "Disponible para trabajar",
     "about.title": "Sobre mí",
     "about.p1": "Soy un desarrollador de aplicaciones multiplataforma formado en el ciclo de DAM y, previamente, en Sistemas Microinformáticos y Redes. Me apasiona transformar ideas en software útil, fiable y bien estructurado.",
     "about.p2": "Trabajo con tecnologías como Java, SQL y el desarrollo web, y disfruto aprendiendo nuevas herramientas para resolver problemas reales. Busco aportar valor en equipos donde pueda seguir creciendo profesionalmente.",
@@ -133,6 +135,7 @@ const translations = {
     "hero.statHours": "internship hours",
     "hero.statDegrees": "vocational degrees",
     "hero.statLangs": "languages",
+    "hero.available": "Available for work",
     "about.title": "About me",
     "about.p1": "I am a cross-platform application developer trained in the DAM programme and, previously, in Microcomputer Systems and Networks. I am passionate about turning ideas into useful, reliable and well-structured software.",
     "about.p2": "I work with technologies such as Java, SQL and web development, and I enjoy learning new tools to solve real-world problems. I aim to add value to teams where I can keep growing professionally.",
@@ -263,7 +266,7 @@ function featuredCard() {
     ? `<a class="proj-link primary" href="${liveUrl}" target="_blank" rel="noopener">${liveIcon}${t["projects.live"]}</a>`
     : "";
   return `
-    <article class="proj-card proj-featured">
+    <article class="proj-card proj-featured card-glow">
       <div class="proj-head">${repoIcon}<h3>${portfolioRepo}</h3><span class="proj-tag">${t["projects.featured"]}</span></div>
       <p class="proj-desc">${t["projects.portfolioDesc"]}</p>
       <div class="proj-meta"><span class="lang"><i></i>JavaScript</span></div>
@@ -276,7 +279,7 @@ function featuredCard() {
 
 function repoCard(r) {
   return `
-    <a class="proj-card" href="${r.html_url}" target="_blank" rel="noopener">
+    <a class="proj-card card-glow" href="${r.html_url}" target="_blank" rel="noopener">
       <div class="proj-head">${repoIcon}<h3>${escapeHtml(r.name)}</h3></div>
       <p class="proj-desc">${r.description ? escapeHtml(r.description) : ""}</p>
       <div class="proj-meta">
@@ -303,7 +306,10 @@ function renderProjects() {
 async function loadProjects() {
   renderProjects();
   try {
-    const res = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=100`);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    const res = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=100`, { signal: controller.signal });
+    clearTimeout(timer);
     if (!res.ok) throw new Error("request failed");
     const repos = await res.json();
     loadedRepos = repos
@@ -353,12 +359,83 @@ function initNav() {
 }
 
 function initReveal() {
-  const els = document.querySelectorAll(".section, .hero-inner");
+  const els = [...document.querySelectorAll(".section, .hero-inner")];
   els.forEach(el => el.classList.add("reveal"));
+  const reveal = el => el.classList.add("in");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(reveal);
+    return;
+  }
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { reveal(e.target); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   els.forEach(el => obs.observe(el));
+  setTimeout(() => els.forEach(reveal), 2500);
+}
+
+function initProgress() {
+  const bar = document.getElementById("scrollProgress");
+  const update = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? `${(h.scrollTop / max) * 100}%` : "0%";
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+function initCounters() {
+  const nums = [...document.querySelectorAll("[data-count]")];
+  const animate = (el) => {
+    if (el.dataset.done) return;
+    el.dataset.done = "1";
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || "";
+    const start = performance.now();
+    const dur = 1400;
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if (!("IntersectionObserver" in window)) {
+    nums.forEach(animate);
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animate(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  nums.forEach(n => obs.observe(n));
+  setTimeout(() => nums.forEach(animate), 2600);
+}
+
+function initScrollSpy() {
+  const links = [...document.querySelectorAll(".nav-links a")];
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${e.target.id}`));
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach(s => obs.observe(s));
+}
+
+function initSpotlight() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  document.addEventListener("pointermove", (e) => {
+    const card = e.target.closest(".card-glow");
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  }, { passive: true });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -366,6 +443,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNav();
   initReveal();
+  initProgress();
+  initCounters();
+  initScrollSpy();
+  initSpotlight();
   document.querySelectorAll(".lang-switch button").forEach(b => {
     b.addEventListener("click", () => applyLang(b.dataset.lang));
   });
