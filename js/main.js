@@ -184,35 +184,87 @@ const translations = {
   }
 };
 
-const hardSkills = {
-  ca: [
-    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "APIs REST", "Swagger", "Docker", "Arquitectura client-servidor"] },
-    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Disseny web responsive"] },
-    { title: "Mòbil i multiplataforma", items: ["Flutter", "Android Studio"] },
-    { title: "CMS i plataformes", items: ["WordPress", "Moodle"] },
-    { title: "Altres", items: ["Git i GitHub", "Intel·ligència artificial (IA)", "Sistemes i xarxes"] }
-  ],
-  es: [
-    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "APIs REST", "Swagger", "Docker", "Arquitectura cliente-servidor"] },
-    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Diseño web responsive"] },
-    { title: "Móvil y multiplataforma", items: ["Flutter", "Android Studio"] },
-    { title: "CMS y plataformas", items: ["WordPress", "Moodle"] },
-    { title: "Otros", items: ["Git y GitHub", "Inteligencia artificial (IA)", "Sistemas y redes"] }
-  ],
-  en: [
-    { title: "Backend", items: ["Java", "PHP", "Laravel", "C#", "Python", "SQL / MySQL", "REST APIs", "Swagger", "Docker", "Client-server architecture"] },
-    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "Bootstrap", "Tailwind CSS", "Responsive web design"] },
-    { title: "Mobile & cross-platform", items: ["Flutter", "Android Studio"] },
-    { title: "CMS & platforms", items: ["WordPress", "Moodle"] },
-    { title: "Other", items: ["Git & GitHub", "Artificial intelligence (AI)", "Systems & networks"] }
-  ]
+const techCategories = [
+  {
+    title: { ca: "Backend", es: "Backend", en: "Backend" },
+    items: [
+      { n: "Java", ic: "dev:java-plain" },
+      { n: "PHP", ic: "dev:php-plain" },
+      { n: "Laravel", ic: "dev:laravel-plain" },
+      { n: "C#", ic: "dev:csharp-plain" },
+      { n: "Python", ic: "dev:python-plain" },
+      { n: "SQL / MySQL", ic: "dev:mysql-original" },
+      { n: { ca: "APIs REST", es: "APIs REST", en: "REST APIs" }, ic: "svg:api" },
+      { n: "Swagger", ic: "dev:swagger-plain" },
+      { n: "Docker", ic: "dev:docker-plain" },
+      { n: { ca: "Arquitectura client-servidor", es: "Arquitectura cliente-servidor", en: "Client-server architecture" }, ic: "svg:server" }
+    ]
+  },
+  {
+    title: { ca: "Frontend", es: "Frontend", en: "Frontend" },
+    items: [
+      { n: "HTML", ic: "dev:html5-plain" },
+      { n: "CSS", ic: "dev:css3-plain" },
+      { n: "JavaScript", ic: "dev:javascript-plain" },
+      { n: "Bootstrap", ic: "dev:bootstrap-plain" },
+      { n: "Tailwind CSS", ic: "dev:tailwindcss-original" },
+      { n: { ca: "Disseny web responsive", es: "Diseño web responsive", en: "Responsive web design" }, ic: "svg:responsive" }
+    ]
+  },
+  {
+    title: { ca: "Mòbil i multiplataforma", es: "Móvil y multiplataforma", en: "Mobile & cross-platform" },
+    items: [
+      { n: "Flutter", ic: "dev:flutter-plain" },
+      { n: "Android Studio", ic: "dev:androidstudio-plain" }
+    ]
+  },
+  {
+    title: { ca: "CMS i plataformes", es: "CMS y plataformas", en: "CMS & platforms" },
+    items: [
+      { n: "WordPress", ic: "dev:wordpress-plain" },
+      { n: "Moodle", ic: "dev:moodle-plain" }
+    ]
+  },
+  {
+    title: { ca: "Altres", es: "Otros", en: "Other" },
+    items: [
+      { n: { ca: "Git i GitHub", es: "Git y GitHub", en: "Git & GitHub" }, ic: "dev:git-plain" },
+      { n: { ca: "Intel·ligència artificial", es: "Inteligencia artificial", en: "Artificial intelligence" }, ic: "svg:ai" },
+      { n: { ca: "Sistemes i xarxes", es: "Sistemas y redes", en: "Systems & networks" }, ic: "svg:network" }
+    ]
+  }
+];
+
+const softSkills = [
+  { ic: "svg:learn", n: { ca: "Ganes constants d'aprendre", es: "Ganas constantes de aprender", en: "Constant drive to learn" } },
+  { ic: "svg:team", n: { ca: "Treball en equip", es: "Trabajo en equipo", en: "Teamwork" } },
+  { ic: "svg:clock", n: { ca: "Puntualitat i gestió del temps", es: "Puntualidad y gestión del tiempo", en: "Punctuality & time management" } },
+  { ic: "svg:brain", n: { ca: "Pensament lògic i crític", es: "Pensamiento lógico y crítico", en: "Logical & critical thinking" } },
+  { ic: "svg:adapt", n: { ca: "Capacitat d'adaptació", es: "Capacidad de adaptación", en: "Adaptability" } },
+  { ic: "svg:puzzle", n: { ca: "Resolució de problemes", es: "Resolución de problemas", en: "Problem solving" } },
+  { ic: "svg:chat", n: { ca: "Comunicació i tracte amb el client", es: "Comunicación y trato con el cliente", en: "Communication & client relations" } }
+];
+
+const svgIcons = {
+  api: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></svg>',
+  server: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg>',
+  responsive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="12" rx="2"/><line x1="2" y1="20" x2="13" y2="20"/><rect x="17" y="9" width="5" height="11" rx="1.5"/></svg>',
+  ai: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 14l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"/></svg>',
+  network: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.2" y1="11" x2="15.8" y2="7"/><line x1="8.2" y1="13" x2="15.8" y2="17"/></svg>',
+  learn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 5 2 9l10 4 10-4z"/><path d="M6 11v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>',
+  team: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M22 19v-2a4 4 0 0 0-3-3.87"/><path d="M16 4.13a4 4 0 0 1 0 7.75"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>',
+  adapt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>',
+  puzzle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a2 2 0 0 1 4 0v.5h2.5a1 1 0 0 1 1 1V8a2 2 0 0 1 0 4v2.5a1 1 0 0 1-1 1H13a2 2 0 0 0-4 0H6.5a1 1 0 0 1-1-1V12a2 2 0 0 1 0-4V5.5a1 1 0 0 1 1-1H9z"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
 };
 
-const softSkills = {
-  ca: ["Ganes constants d'aprendre", "Treball en equip", "Puntualitat i gestió eficaç del temps", "Pensament lògic i crític", "Capacitat d'adaptació", "Resolució de problemes", "Comunicació i tracte amb el client"],
-  es: ["Ganas constantes de aprender", "Trabajo en equipo", "Puntualidad y gestión eficaz del tiempo", "Pensamiento lógico y crítico", "Capacidad de adaptación", "Resolución de problemas", "Comunicación y trato con el cliente"],
-  en: ["Constant drive to learn", "Teamwork", "Punctuality and effective time management", "Logical and critical thinking", "Adaptability", "Problem solving", "Communication and client relations"]
-};
+function skillLabel(n) { return typeof n === "string" ? n : n[currentLang]; }
+function iconHtml(ic) {
+  if (ic.startsWith("dev:")) return `<i class="devicon-${ic.slice(4)} colored" aria-hidden="true"></i>`;
+  return svgIcons[ic.slice(4)] || "";
+}
 
 const githubUser = "rogerb18";
 const portfolioRepo = "portafoli";
@@ -241,17 +293,26 @@ function applyLang(lang) {
 
 function renderHardSkills() {
   const wrap = document.getElementById("hardSkills");
-  wrap.innerHTML = hardSkills[currentLang].map(group => `
-    <div class="skill-group">
-      <h4>${group.title}</h4>
-      <div class="chips">${group.items.map(s => `<span class="chip"><i></i>${s}</span>`).join("")}</div>
+  wrap.innerHTML = techCategories.map(cat => `
+    <div class="tech-cat">
+      <div class="tech-cat-head"><h4>${skillLabel(cat.title)}</h4><span class="tech-count">${cat.items.length}</span></div>
+      <div class="tech-grid">
+        ${cat.items.map(it => `
+          <div class="tech-tile card-glow">
+            <span class="tech-ic">${iconHtml(it.ic)}</span>
+            <span class="tech-name">${skillLabel(it.n)}</span>
+          </div>`).join("")}
+      </div>
     </div>`).join("");
 }
 
 function renderSoftSkills() {
   const wrap = document.getElementById("softSkills");
-  const check = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
-  wrap.innerHTML = softSkills[currentLang].map(s => `<li>${check}${s}</li>`).join("");
+  wrap.innerHTML = softSkills.map(s => `
+    <div class="soft-card card-glow">
+      <span class="soft-ic">${iconHtml(s.ic)}</span>
+      <span>${skillLabel(s.n)}</span>
+    </div>`).join("");
 }
 
 const repoIcon = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>';
