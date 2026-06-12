@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafoli de Roger Buendia Salazar, desenvolupador d'aplicacions multiplataforma." />
+  <meta name="author" content="Roger Buendia Salazar" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Roger Buendia Salazar · Portafoli</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236d8bff'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3ERB%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a href="#inici" class="brand">
+      <span class="brand-mark">RB</span>
+      <span class="brand-name">Roger Buendia</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#sobre-mi" data-i18n="nav.about">Sobre mi</a>
+      <a href="#experiencia" data-i18n="nav.experience">Experiència</a>
+      <a href="#estudis" data-i18n="nav.education">Estudis</a>
+      <a href="#habilitats" data-i18n="nav.skills">Habilitats</a>
+      <a href="#projectes" data-i18n="nav.projects">Projectes</a>
+      <a href="#contacte" data-i18n="nav.contact">Contacte</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Idioma">
+        <button data-lang="ca" class="active" type="button">CA</button>
+        <button data-lang="es" type="button">ES</button>
+        <button data-lang="en" type="button">EN</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Canviar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inici">
+      <div class="hero-inner">
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Desenvolupador d'aplicacions multiplataforma</p>
+        <h1 class="hero-title">Roger Buendia <span>Salazar</span></h1>
+        <p class="hero-lead" data-i18n="hero.lead">Creo aplicacions i solucions web amb codi net, atenció al detall i ganes constants d'aprendre.</p>
+        <div class="hero-cta">
+          <a href="#projectes" class="btn btn-primary" data-i18n="hero.ctaProjects">Veure projectes</a>
+          <a href="#contacte" class="btn btn-ghost" data-i18n="hero.ctaContact">Contacta'm</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong>915+</strong><span data-i18n="hero.statHours">hores de pràctiques</span></li>
+          <li><strong>2</strong><span data-i18n="hero.statDegrees">titulacions FP</span></li>
+          <li><strong>3</strong><span data-i18n="hero.statLangs">idiomes</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 data-i18n="about.title">Sobre mi</h2>
+      </div>
+      <div class="about">
+        <div class="about-text">
+          <p data-i18n="about.p1">Sóc un desenvolupador d'aplicacions multiplataforma format en el cicle de DAM i, prèviament, en Sistemes Microinformàtics i Xarxes. M'apassiona transformar idees en programari útil, fiable i ben estructurat.</p>
+          <p data-i18n="about.p2">Treballo amb tecnologies com Java, SQL i el desenvolupament web, i disfruto aprenent eines noves per resoldre problemes reals. Busco aportar valor en equips on pugui seguir creixent professionalment.</p>
+        </div>
+        <aside class="about-card">
+          <h3 data-i18n="about.langTitle">Idiomes</h3>
+          <ul class="lang-list">
+            <li><span data-i18n="about.langCa">Català</span><em data-i18n="about.levelNative">Natiu</em></li>
+            <li><span data-i18n="about.langEs">Castellà</span><em data-i18n="about.levelNative">Natiu</em></li>
+            <li><span data-i18n="about.langEn">Anglès</span><em data-i18n="about.levelInter">Intermedi</em></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2 data-i18n="exp.title">Experiència</h2>
+      </div>
+      <div class="timeline">
+        <article class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-top">
+              <h3 data-i18n="exp.job1Role">Pràctiques de desenvolupament · CFGS DAM</h3>
+              <span class="tl-date" data-i18n="exp.job1Date">515 h</span>
+            </div>
+            <p class="tl-org" data-i18n="exp.job1Org">Iswolk Technology — Consultoria informàtica (conveni Tecnocampus)</p>
+            <ul class="tl-list">
+              <li data-i18n="exp.job1b1">Desenvolupament i integració d'APIs.</li>
+              <li data-i18n="exp.job1b2">Gestió i administració de cursos i plataformes.</li>
+              <li data-i18n="exp.job1b3">Atenció i seguiment de clients en un entorn professional real.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-top">
+              <h3 data-i18n="exp.job2Role">Pràctiques de sistemes i xarxes · CFGM SMX</h3>
+              <span class="tl-date" data-i18n="exp.job2Date">400 h · 2023</span>
+            </div>
+            <p class="tl-org" data-i18n="exp.job2Org">Escola Universitària d'Hoteleria i Turisme — Gran Sol</p>
+            <ul class="tl-list">
+              <li data-i18n="exp.job2b1">Manteniment i configuració de sistemes i equips informàtics.</li>
+              <li data-i18n="exp.job2b2">Configuració i administració de xarxes.</li>
+              <li data-i18n="exp.job2b3">Resolució d'incidències tècniques i suport a l'usuari.</li>
+              <li data-i18n="exp.job2b4">Treball en equip en un entorn laboral real.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="estudis">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 data-i18n="edu.title">Estudis</h2>
+      </div>
+      <div class="edu-grid">
+        <article class="edu-card">
+          <span class="edu-badge" data-i18n="edu.badgeHigher">Grau superior</span>
+          <h3 data-i18n="edu.deg1">CFGS Desenvolupament d'Aplicacions Multiplataforma</h3>
+          <p class="edu-school">Escola Freta · Calella</p>
+        </article>
+        <article class="edu-card">
+          <span class="edu-badge" data-i18n="edu.badgeMid">Grau mitjà</span>
+          <h3 data-i18n="edu.deg2">CFGM Sistemes Microinformàtics i Xarxes</h3>
+          <p class="edu-school">Escola Freta · Calella</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="habilitats">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2 data-i18n="skills.title">Habilitats</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-block">
+          <h3 data-i18n="skills.hardTitle">Habilitats tècniques</h3>
+          <div class="chips" id="hardSkills"></div>
+        </div>
+        <div class="skill-block">
+          <h3 data-i18n="skills.softTitle">Habilitats personals</h3>
+          <ul class="soft-list" id="softSkills"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projectes">
+      <div class="section-head">
+        <span class="section-index">05</span>
+        <h2 data-i18n="projects.title">Projectes</h2>
+      </div>
+      <p class="section-sub" data-i18n="projects.sub">Projectes públics del meu perfil de GitHub.</p>
+      <div class="projects" id="projectsGrid">
+        <div class="projects-loading" data-i18n="projects.loading">Carregant projectes…</div>
+      </div>
+      <a href="https://github.com/rogerb18" target="_blank" rel="noopener" class="btn btn-ghost projects-all" data-i18n="projects.viewAll">Veure tot a GitHub</a>
+    </section>
+
+    <section class="section" id="contacte">
+      <div class="section-head">
+        <span class="section-index">06</span>
+        <h2 data-i18n="contact.title">Contacte</h2>
+      </div>
+      <p class="section-sub" data-i18n="contact.sub">Estàs buscant algú com jo? Parlem-ne.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:rogerbuendia37@gmail.com">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <span class="contact-label" data-i18n="contact.email">Correu electrònic</span>
+          <span class="contact-value">rogerbuendia37@gmail.com</span>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/roger-buendia-salazar-828708356" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">Roger Buendia Salazar</span>
+        </a>
+        <a class="contact-card" href="https://github.com/rogerb18" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/rogerb18</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Roger Buendia Salazar</span>
+    <span data-i18n="footer.built">Fet amb HTML, CSS i JavaScript</span>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
