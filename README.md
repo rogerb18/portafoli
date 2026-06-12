@@ -34,3 +34,13 @@ npx serve .
 2. Arrossega la carpeta del projecte a la zona d'arxius. Llest.
 
 Alternativament, connecta un repositori de Git i Netlify desplegarà automàticament a cada `push` (publish directory: `.`).
+
+## Activar el botó "Web en viu"
+
+Quan tinguis la URL pública de Netlify, posa-la a la constant `liveUrl` (a dalt de `js/main.js`):
+
+```js
+const liveUrl = "https://el-teu-nom.netlify.app";
+```
+
+El botó "Web en viu" apareixerà automàticament a la targeta destacada de Projectes. Mentre estigui buida (`""`), només es mostra el botó de codi.

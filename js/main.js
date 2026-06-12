@@ -52,6 +52,8 @@ const translations = {
     "projects.error": "No s'han pogut carregar els projectes. Visita el meu GitHub.",
     "projects.featured": "Destacat",
     "projects.portfolioDesc": "Aquest mateix portafoli: web responsive i multillenguatge feta amb HTML, CSS i JavaScript, desplegada a Netlify.",
+    "projects.code": "Codi",
+    "projects.live": "Web en viu",
     "contact.title": "Contacte",
     "contact.sub": "Estàs buscant algú com jo? Parlem-ne.",
     "contact.email": "Correu electrònic",
@@ -110,6 +112,8 @@ const translations = {
     "projects.error": "No se han podido cargar los proyectos. Visita mi GitHub.",
     "projects.featured": "Destacado",
     "projects.portfolioDesc": "Este mismo portafolio: web responsive y multilingüe hecha con HTML, CSS y JavaScript, desplegada en Netlify.",
+    "projects.code": "Código",
+    "projects.live": "Web en vivo",
     "contact.title": "Contacto",
     "contact.sub": "¿Buscas a alguien como yo? Hablemos.",
     "contact.email": "Correo electrónico",
@@ -168,6 +172,8 @@ const translations = {
     "projects.error": "Projects could not be loaded. Visit my GitHub.",
     "projects.featured": "Featured",
     "projects.portfolioDesc": "This very portfolio: a responsive, multilingual site built with HTML, CSS and JavaScript, deployed on Netlify.",
+    "projects.code": "Code",
+    "projects.live": "Live site",
     "contact.title": "Contact",
     "contact.sub": "Looking for someone like me? Let's talk.",
     "contact.email": "Email",
@@ -190,6 +196,7 @@ const softSkills = {
 const githubUser = "rogerb18";
 const portfolioRepo = "portafoli";
 const portfolioUrl = `https://github.com/${githubUser}/${portfolioRepo}`;
+const liveUrl = "";
 
 let currentLang = "ca";
 let loadedRepos = null;
@@ -224,15 +231,24 @@ function renderSoftSkills() {
 const repoIcon = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>';
 const starIcon = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
 
+const codeIcon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>';
+const liveIcon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
 function featuredCard() {
+  const t = translations[currentLang];
+  const liveBtn = liveUrl
+    ? `<a class="proj-link primary" href="${liveUrl}" target="_blank" rel="noopener">${liveIcon}${t["projects.live"]}</a>`
+    : "";
   return `
-    <a class="proj-card proj-featured" href="${portfolioUrl}" target="_blank" rel="noopener">
-      <div class="proj-head">${repoIcon}<h3>${portfolioRepo}</h3><span class="proj-tag">${translations[currentLang]["projects.featured"]}</span></div>
-      <p class="proj-desc">${translations[currentLang]["projects.portfolioDesc"]}</p>
-      <div class="proj-meta">
-        <span class="lang"><i></i>JavaScript</span>
+    <article class="proj-card proj-featured">
+      <div class="proj-head">${repoIcon}<h3>${portfolioRepo}</h3><span class="proj-tag">${t["projects.featured"]}</span></div>
+      <p class="proj-desc">${t["projects.portfolioDesc"]}</p>
+      <div class="proj-meta"><span class="lang"><i></i>JavaScript</span></div>
+      <div class="proj-actions">
+        ${liveBtn}
+        <a class="proj-link" href="${portfolioUrl}" target="_blank" rel="noopener">${codeIcon}${t["projects.code"]}</a>
       </div>
-    </a>`;
+    </article>`;
 }
 
 function repoCard(r) {
