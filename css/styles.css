@@ -409,13 +409,13 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(18px, 5vw, 48px)
 .tl-list li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
 
 .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
-.edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); backdrop-filter: blur(12px); transition: transform 0.25s ease, border-color 0.25s ease; }
+.edu-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); backdrop-filter: blur(12px); transition: transform 0.25s ease, border-color 0.25s ease; }
 .edu-card:hover { transform: translateY(-6px); border-color: var(--border-strong); }
-.edu-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.edu-card h3 { font-size: 18px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; }
+.edu-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .edu-badge { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 5px 13px; border-radius: 999px; }
 .edu-date { font-size: 12px; font-weight: 600; color: var(--accent-2); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
-.edu-card h3 { font-size: 18px; font-weight: 600; line-height: 1.35; }
-.edu-school { margin-top: 12px; color: var(--text-dim); font-size: 14.5px; }
+.edu-school { margin-top: auto; color: var(--text-dim); font-size: 14.5px; font-weight: 500; }
 
 .skills { display: flex; flex-direction: column; gap: 44px; }
 .skill-block h3 { font-family: var(--font-display); font-size: 19px; margin-bottom: 24px; display: flex; align-items: center; gap: 11px; }
